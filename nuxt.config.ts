@@ -6,7 +6,7 @@ const config: NuxtConfig = {
     '@nuxtjs/composition-api',
     '@nuxt/typescript-build'
   ],
-  mode: 'spa',
+  ssr: false,
   css: [],
   env: {},
   head: {
@@ -19,10 +19,16 @@ const config: NuxtConfig = {
     link: []
   },
   loading: { color: '#0c64c1' },
-  modules: [],
+  modules: [ '@nuxtjs/dotenv'],
   plugins: [
+    '~/plugins/auth0',
     '~/plugins/truncate'
-  ]
+  ],
+  auth0: {
+    domain: process.env.AUTH0_DOMAIN,
+    client_id: process.env.AUHT0_CLIENTID
+  },
+  
 }
 
 export default config
