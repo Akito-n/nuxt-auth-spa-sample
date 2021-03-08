@@ -17,7 +17,36 @@
         </nuxt-link>
       </li>
     </ul>
+    <div v-if="!loggedIn()">
+      <div>ログインしてください。</div>
+      <nuxt-link class="button is-primary" to="/login">
+        <span>login</span>
+      </nuxt-link>
+    </div>
+    <div v-else>
+      <div>{{ userInfo().nickname }}</div>
+      <button @click="logout()">
+        ログアウトする
+      </button>
+    </div>
   </main>
 </template>
 
-<script lang="ts"></script>
+<script lang="ts">
+export default {
+  methods: {
+    loggedIn() {
+      return this.$auth0.isAuthenticated()
+    },
+    userInfo() {
+      const user = this.$auth0.getUserData()
+      console.log(user)
+      return user
+    },
+    logout() {
+      this.$auth0.logOut()
+      this.$router.replace('/')
+    }
+  }
+}
+</script>
