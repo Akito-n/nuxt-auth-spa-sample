@@ -5,7 +5,14 @@
         v-for="page in ['Options API', 'Class API', 'Composition API']"
         :key="page"
       >
-        <nuxt-link :to="`/${page.toLowerCase().split(' ').join('-')}`">
+        <nuxt-link
+          :to="
+            `/${page
+              .toLowerCase()
+              .split(' ')
+              .join('-')}`
+          "
+        >
           With {{ page }}
         </nuxt-link>
       </li>
@@ -13,5 +20,4 @@
   </main>
 </template>
 
-<script lang="ts">
-</script>
+<script lang="ts"></script>
