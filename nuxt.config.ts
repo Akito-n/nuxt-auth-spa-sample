@@ -6,7 +6,7 @@ const config: NuxtConfig = {
     '@nuxtjs/composition-api',
     '@nuxt/typescript-build'
   ],
-  mode: 'spa',
+  ssr: false,
   css: [],
   env: {},
   head: {
@@ -19,10 +19,40 @@ const config: NuxtConfig = {
     link: []
   },
   loading: { color: '#0c64c1' },
-  modules: [],
+  modules: [
+    '@nuxtjs/dotenv',
+    '@nuxtjs/axios',
+    '@nuxtjs/auth'
+  ],
   plugins: [
-    '~/plugins/truncate'
-  ]
+    
+    '~/plugins/truncate',
+    
+  ],
+  auth: {
+    strategies: {
+      auth0:{
+        domain: process.env.AUTH0_DOMAIN,
+        client_id: process.env.AUHT0_CLIENTID,
+        logoutRedirectUri: 'http://localhost:3000/logout',
+      }
+    },
+    redirect: {
+      login: '/login',
+      logout: '/logout',
+      callback: '/callback',
+      home: '/'
+    },
+  },
+  router: {
+    middleware: 'auth'
+  },
+}
+
+declare module 'vue/types/vue' {
+  interface Vue {
+    $auth: any
+  }
 }
 
 export default config
