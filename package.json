@@ -5,8 +5,15 @@
   "private": true,
   "dependencies": {
     "@nuxtjs/composition-api": "0.22.0",
+    "@nuxtjs/dotenv": "^1.4.1",
+    "@types/auth0-lock": "^11.27.0",
+    "@types/jwt-decode": "^3.1.0",
+    "@types/query-string": "^6.3.0",
+    "auth0-lock": "^11.28.1",
+    "jwt-decode": "^3.1.2",
+    "nuxt": "2.15.2",
     "nuxt-property-decorator": "2.9.1",
-    "nuxt": "2.15.2"
+    "query-string": "^6.14.1"
   },
   "scripts": {
     "dev": "HOST=0.0.0.0 PORT=5000 nuxt",
