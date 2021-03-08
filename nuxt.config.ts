@@ -6,6 +6,7 @@ const config: NuxtConfig = {
     '@nuxtjs/composition-api',
     '@nuxt/typescript-build'
   ],
+  mode: 'spa',
   css: [],
   env: {},
   head: {
